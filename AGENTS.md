@@ -1,0 +1,80 @@
+# Project instructions
+
+- When a request is ambiguous or incomplete, ask one closed question at a time (yes/no or pick-one).
+- Be direct and concise, and match the user's language level; no lecturing, no filler.
+- Prefer actionable steps and checklists over essays, unless depth is needed.
+- Write specs, `AGENTS.md` files and other records in the style of ASD-STE100.
+
+## Environment
+
+- OS: `Windows` 
+- Shell: `Git Bash`
+
+### Git
+
+- Git remote: `https://github.com/Testing-IA-TrIT/testing-inteligente-practica.git`
+- Default branch: `main`
+- MANDATORY: Preserve work; no secrets; no destructive commands.
+- Group related changes; keep commits small and focused.
+- Conventional commit `{feat|refactor|fix|chore|docs|test}(scope): {description}`
+
+## System
+
+Based on two projects, a backend REST API in `projects/back` and a frontend web application in `projects/front`.
+
+
+### Back API
+- `projects/back` owns the data. Only it connects to persistence. 
+- REST API: paths start with `/api`; a resource is a plural noun. JSON bodies, ISO 8601 dates, `Authorization: Bearer <token>`. Status codes: 200, 201, 204, 400, 401, 403, 404, 409, 413, 500. Every error has the body `{ "error": "<message>" }`; an input error adds `fields`. An error never shows a stack, SQL or a path.
+- Security: no secrets in the code or the repository; a password only as a salted hash; check each input at the edge.
+
+### Front Web
+- `projects/front` get data only through `projects/back`.
+- Is a single-page application based on modern HTML, CSS and JavaScript. It uses the browser's native Web Components, and a minimal CSS framework. Vite serves it. No UI framework, no UI library.
+
+## Tooling (Vite+)
+
+- The root, `projects/back`, `projects/front` and `e2e/` use Vite+ (`vp`). The root `package.json` has `"type": "module"`.
+- The root `vite.config.ts` holds the shared configuration: `lint` (Oxlint, typeAware, typeCheck), `fmt` (Oxfmt), `staged` and `test.projects`.
+- Each project has a local `vite.config.ts` with a unique `test.name` (`back`, `front`) and `test.include`.
+- To format, lint and check the types of all projects, including e2e, use `npm run check` in the root folder. It runs `vp check --fix` and changes files. Do not add a separate `tsc` check.
+- To run all the unit tests, use `npm test` (`vp test --run`) in the root folder. It runs `projects/*` only, not the e2e tests.
+- To install all the projects and Chromium, use `npm run setup` in the root folder.
+- To run all the checks and all the tests, use `npm run verify` in the root folder.
+- The pre-commit hook (`.vite-hooks/pre-commit`) runs `vp staged`: `vp check --fix` on all staged files and `vp test related --run` on staged `.ts` files. A failure stops the commit.
+
+## Tests
+
+### Unit tests
+- Unit tests prove `logic`, at least one for each business rule, with a fake `data`. They also prove `shared` and `core`. They are fast and independent.
+- Written in TypeScript, and collocated near the code they test. They use Vitest through `vite-plus/test` (`expect`, `test`, `vi`) and no other framework or library. To run them, use `npm test` in the root folder or in the project folder.
+
+### E2E tests
+
+- The e2e tests are in `e2e/`. They use Playwright with TypeScript and the `chromium` project only.
+- To run the tests, use `npm run test:e2e` in the root folder, or `npm test` in `e2e/`. To check the types, use `npm run check` in the root folder.
+- `npm run test:e2e` stops the servers of `npm start`. Then it empties the database and starts the back and the front. Each run starts with an empty database.
+- Do not use `vp test` for the e2e tests. Vitest cannot run Playwright specs.
+- Put each test in `e2e/tests/<id>-<slug>/<story-code>-<slug>.test.ts`.
+- Put each journey test in `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
+- The front URL is `http://localhost:4000`. 
+- The back URL is `http://localhost:3000`. 
+- `e2e/core/` holds the shared setup: `env.ts` (URLs), `global-setup.ts` (checks and seed) and `seed-data.ts`.
+- For data that a scenario must find before it starts (a `setup` in the spec), add it to `e2e/core/seed-data.ts`. For all other data, use unique values.
+- Make each test independent. Use unique data, for example an email with `Date.now()`.
+### Code complexity limits
+
+No tool checks these limits. Review them manually.
+
+| Limit | Code | Tests (all `e2e` files) |
+| --- | --- | --- |
+| Cyclomatic complexity of a function | 8 | 8 |
+| Statements in a function | 16 | 64 |
+| Nesting depth | 2 | 4 |
+| Parameters of a function | 2 | 4 |
+| Lines in a file | 128 | 256 |
+| Entries in a folder | 16 | — |
+
+---
+
+> last updated: 2026-10-17
