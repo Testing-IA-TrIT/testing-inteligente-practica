@@ -90,3 +90,12 @@ La URL de tu repositorio, público y sin secretos, con:
 Si ninguna prueba falla, no necesitas un triage. La evidencia es el informe `e2e-report.md` de toda la suite, en verde.
 
 No es válida si la suite falla o si has debilitado una prueba para que pase.
+
+---
+
+**[Alberto Basalo](https://albertobasalo.dev)**
+
+- [LinkedIn](https://www.linkedin.com/in/albertobasalo/)
+- [x/twitter](https://twitter.com/albertobasalo)
+- [AI Code Academy](https://aicode.academy)
+- [AIDDbot](https://aiddbot.com)
