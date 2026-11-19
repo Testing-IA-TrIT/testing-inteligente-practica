@@ -53,7 +53,7 @@ test.describe(
 
     for (const tokenCase of ["no token", "an invalid token"]) {
       test(`[R9] Send ${tokenCase} to login`, { tag: "@S0005-R9" }, async ({ page, request }) => {
-        const token = await logIn(request);
+        const _token = await logIn(request);
         const launchId = await createLaunch(page, seedRocket.name);
         if (tokenCase === "no token") {
           await page.evaluate(() => localStorage.clear());

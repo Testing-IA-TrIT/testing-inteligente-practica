@@ -145,7 +145,8 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
         sendBooking(request, launchId, passenger, token),
         sendBooking(request, launchId, secondPassenger, token),
       ]);
-      expect(responses.map((response) => response.status()).sort()).toEqual([201, 409]);
+      const statuses = responses.map((response) => response.status()).sort((a, b) => a - b);
+      expect(statuses).toEqual([201, 409]);
       const state = (await getBookings(request, launchId, token)).json() as Promise<{
         bookings: Array<{ identityDocument: string }>;
       }>;
@@ -191,7 +192,8 @@ test.describe("[US1] Book a passenger on a launch", { tag: ["@S0005", "@S0005-US
         sendBooking(request, launchId, createPassenger(), token),
         sendBooking(request, launchId, createPassenger(), token),
       ]);
-      expect(responses.map((response) => response.status()).sort()).toEqual([201, 409]);
+      const statuses = responses.map((response) => response.status()).sort((a, b) => a - b);
+      expect(statuses).toEqual([201, 409]);
       const state = (await getBookings(request, launchId, token)).json() as Promise<{
         capacity: number;
         availableSeats: number;
