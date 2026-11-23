@@ -25,48 +25,38 @@
 
 ## System
 
-Based on two projects, a backend REST API in `projects/back` and a frontend web application in `projects/front`.
-
-
 ### Back API
-- `projects/back` owns the data. Only it connects to persistence. 
+
+- Only `projects/back` connects to persistence.
 - REST API: paths start with `/api`; a resource is a plural noun. JSON bodies, ISO 8601 dates, `Authorization: Bearer <token>`. Status codes: 200, 201, 204, 400, 401, 403, 404, 409, 413, 500. Every error has the body `{ "error": "<message>" }`; an input error adds `fields`. An error never shows a stack, SQL or a path.
-- Security: no secrets in the code or the repository; a password only as a salted hash; check each input at the edge.
+- Check each input at the API boundary. Store passwords as salted hashes.
 
 ### Front Web
-- `projects/front` get data only through `projects/back`.
-- Is a single-page application based on modern HTML, CSS and JavaScript. It uses the browser's native Web Components, and a minimal CSS framework. Vite serves it. No UI framework, no UI library.
+
+- Get front-end data through `projects/back` only.
+- Use only native Web Components for the UI. Use the existing CSS framework for styles. Serve the single-page application with Vite.
 
 ## Tooling (Vite+)
 
 - The root, `projects/back`, `projects/front` and `e2e/` use Vite+ (`vp`). The root `package.json` has `"type": "module"`.
 - The root `vite.config.ts` holds the shared configuration: `lint` (Oxlint, typeAware, typeCheck), `fmt` (Oxfmt), `staged` and `test.projects`.
-- Each project has a local `vite.config.ts` with a unique `test.name` (`back`, `front`) and `test.include`.
-- To format, lint and check the types of all projects, including e2e, use `npm run check` in the root folder. It runs `vp check --fix` and changes files. Do not add a separate `tsc` check.
-- To run all the unit tests, use `npm test` (`vp test --run`) in the root folder. It runs `projects/*` only, not the e2e tests.
-- To install all the projects and Chromium, use `npm run setup` in the root folder.
-- To run all the checks and all the tests, use `npm run verify` in the root folder.
-- The pre-commit hook (`.vite-hooks/pre-commit`) runs `vp staged`: `vp check --fix` on all staged files and `vp test related --run` on staged `.ts` files. A failure stops the commit.
+- Set a unique `test.name` and set `test.include` in the local Vite configs for `back` and `front`.
+- Use the [root commands](PROYECTO.md#comprobaciones-y-pruebas). Use the Vite+ type check for all projects, including E2E. Do not add a separate `tsc` check.
 
 ## Tests
 
 ### Unit tests
-- Unit tests prove `logic`, at least one for each business rule, with a fake `data`. They also prove `shared` and `core`. They are fast and independent.
-- Written in TypeScript, and collocated near the code they test. They use Vitest through `vite-plus/test` (`expect`, `test`, `vi`) and no other framework or library. To run them, use `npm test` in the root folder or in the project folder.
+
+- Write fast, independent tests for `logic`, `shared` and `core`. Test each business rule with fake `data`.
+- Put TypeScript unit tests next to the code. Use `expect`, `test` and `vi` from `vite-plus/test`.
 
 ### E2E tests
 
-- The e2e tests are in `e2e/`. They use Playwright with TypeScript and the `chromium` project only.
-- To run the tests, use `npm run test:e2e` in the root folder, or `npm test` in `e2e/`. To check the types, use `npm run check` in the root folder.
-- `npm run test:e2e` stops the servers of `npm start`. Then it empties the database and starts the back and the front. Each run starts with an empty database.
-- Do not use `vp test` for the e2e tests. Vitest cannot run Playwright specs.
-- Put each test in `e2e/tests/<id>-<slug>/<story-code>-<slug>.test.ts`.
-- Put each journey test in `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
-- The front URL is `http://localhost:4000`. 
-- The back URL is `http://localhost:3000`. 
-- `e2e/core/` holds the shared setup: `env.ts` (URLs), `global-setup.ts` (checks and seed) and `seed-data.ts`.
-- For data that a scenario must find before it starts (a `setup` in the spec), add it to `e2e/core/seed-data.ts`. For all other data, use unique values.
-- Make each test independent. Use unique data, for example an email with `Date.now()`.
+- Use Playwright with TypeScript and the `chromium` project. Follow [the E2E file and code rules](.agents/skills/implement-test/references/e2e-rules.md#e1-files-and-codes).
+- Before running E2E tests, check [when the database resets](PROYECTO.md#la-base-de-datos).
+- Use the URLs from `e2e/core/env.ts`. The checks and seed run in `e2e/core/global-setup.ts`.
+- Add data that a scenario needs at the start to `e2e/core/seed-data.ts`. Use unique values for data that the test creates. Make each test independent.
+
 ### Code complexity limits
 
 No tool checks these limits. Review them manually.

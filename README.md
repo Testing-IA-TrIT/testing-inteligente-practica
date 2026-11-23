@@ -1,6 +1,6 @@
 # Testing Inteligente · Práctica final
 
-Aplica el proceso de todo el curso a una funcionalidad nueva: defínela, impleméntala y valídala con agentes. Entrega el resultado en tu GitHub.
+Define, implementa y valida una funcionalidad nueva con los agentes del curso.
 
 ## La petición
 
@@ -23,54 +23,26 @@ Cuando la cancelación funcione, prueba también el objetivo completo del operad
 > El operador entra, reserva una plaza para un pasajero en un lanzamiento y cancela esa reserva. Al final ve otra vez la plaza libre.
 
 - El código es `J0002`. El `.feature` que define el journey va en `specs/J0002-<slug>/J0002-<slug>.feature`.
-- Cada paso apunta a un criterio que existe, por ejemplo `S0005-R1`. El journey no añade reglas nuevas.
-- Si un paso no tiene criterio, la spec tiene un hueco. Corrige la spec, no el journey.
+- Vincula cada paso con un criterio existente, como `S0005-R1`. Si falta un criterio, completa la spec correspondiente.
 
 ## Preparar el proyecto
 
-Necesitas Git y Node `^22.18`, `^24.11` o `>=26`. El proyecto se ha probado con Node 26.
+Haz un fork o crea tu repositorio con «Use this template». Clónalo y sigue las [instrucciones de instalación](PROYECTO.md#instalar-una-vez).
 
-Haz un fork de este repositorio, o crea el tuyo con «Use this template». Clónalo. Después, ejecuta este comando en la carpeta raíz:
-
-```text
-npm run setup
-```
-
-Comprueba tu versión de Node, instala todos los proyectos e instala Chromium. No necesitas crear archivos `.env`.
-
-El archivo [PROYECTO.md](PROYECTO.md) describe las carpetas, los comandos y el hook de commit.
-
-## Ejecutar las pruebas
-
-Todo se ejecuta en la carpeta raíz. No es necesario entrar en `e2e/`.
-
-| Qué | Comando |
-| --- | --- |
-| Formato, lint y tipos | `npx vp check` |
-| Pruebas unitarias | `npm test` |
-| Toda la suite e2e | `npm run test:e2e` |
-| Solo una spec o un journey | `npm run test:e2e -- --grep "@<id>"` |
-| Todas las comprobaciones | `npm run verify` |
-
-Antes de empezar y antes de entregar, comprueba que `npm run verify` pasa.
-
-## La base de datos
-
-- `npm run test:e2e` para los servidores de `npm start`, vacía la base de datos y arranca el back y el front. Cada ejecución empieza con la base de datos vacía.
-- Para vaciarla a mano, ejecuta `npm run stop` y después `npm run reset`. Con los servidores en marcha, `npm run reset` falla con `Cannot delete`.
+Antes de empezar y antes de entregar, comprueba que `npm run verify` pasa. Consulta los [comandos y el reinicio de la base de datos](PROYECTO.md#comprobaciones-y-pruebas).
 
 ## Qué debes hacer
 
-Aplica el proceso del curso: cada responsable en su propia conversación y con sus skills. Si una prueba falla, haz el triage antes de corregir. No debilites una prueba para que pase.
+Usa las skills del curso. Trabaja con cada responsable en su propia conversación.
 
 1. Define e implementa la spec de la cancelación.
 2. Prueba la spec.
 3. Prueba el journey `J0002`.
-4. Ejecuta toda la suite y corrige los fallos que encuentres.
+4. Ejecuta `detect-bugs` con el código de la spec de cancelación y el alcance «suite completa». Si hay fallos, corrígelos y vuelve a generar el informe.
 
 ### Qué debes entregar
 
-La URL de tu repositorio, público y sin secretos, con:
+Entrega la URL de tu repositorio público de GitHub, sin secretos. Incluye estos archivos y commits.
 
 1. La spec de la cancelación en `specs/<id>-<slug>/<id>.spec.md` y sus archivos `.feature`.
 2. El `.feature` del journey `J0002`.
@@ -87,9 +59,7 @@ La URL de tu repositorio, público y sin secretos, con:
 | Validar: las pruebas de la spec y del journey siguen las reglas del curso. Si una prueba falla, el triage está en `fix.spec.md` antes de la corrección | 30 |
 | Proceso: los commits muestran el trabajo por pasos | 10 |
 
-Si ninguna prueba falla, no necesitas un triage. La evidencia es el informe `e2e-report.md` de toda la suite, en verde.
-
-No es válida si la suite falla o si has debilitado una prueba para que pase.
+Para que la entrega sea válida, el informe debe mostrar la suite completa en verde y las pruebas deben conservar sus comprobaciones.
 
 ---
 

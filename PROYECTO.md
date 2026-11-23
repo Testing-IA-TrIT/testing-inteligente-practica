@@ -1,8 +1,6 @@
 # Testing Inteligente · El proyecto
 
-Proyecto base de la práctica final del curso Testing Inteligente: pruebas e2e con inteligencia artificial y Playwright. El enunciado de la práctica está en el [README](README.md).
-
-AstroBookings es una agencia que vende plazas en lanzamientos espaciales. El proyecto tiene una API, una web, las specs, las pruebas y las skills de los agentes.
+AstroBookings vende plazas en lanzamientos espaciales. El enunciado de la práctica está en el [README](README.md).
 
 ## Qué incluye
 
@@ -19,18 +17,14 @@ AstroBookings es una agencia que vende plazas en lanzamientos espaciales. El pro
 
 ## Cabecera YAML de una spec
 
-- `type` distingue una funcionalidad (`feature`), un arreglo (`bug-fix`), un refactor (`refactor`) y un cambio de comportamiento (`change`).
+- `type` distingue una funcionalidad (`feature`), un arreglo (`bug-fix`), un cambio interno (`refactor`) y un cambio de comportamiento (`change`).
 - `solution-mode` indica si `Solution` describe el comportamiento actual (`descriptive`) o define el trabajo de implementación (`prescriptive`). Si falta el campo, la spec se interpreta como prescriptiva.
 
 ## Instalar (una vez)
 
-Necesitas Git y Node `^22.18`, `^24.11` o `>=26`. En la carpeta raíz, ejecuta:
+Necesitas Git y Node `^22.18`, `^24.11` o `>=26`. El proyecto se ha probado con Node 26.
 
-```text
-npm run setup
-```
-
-Este comando comprueba la versión de Node, instala todos los proyectos e instala Chromium. No necesitas archivos `.env`.
+Desde la raíz, ejecuta `npm run setup` para instalar las dependencias y Chromium. La configuración por defecto funciona sin archivos `.env`.
 
 ## Comprobaciones y pruebas
 
@@ -47,15 +41,9 @@ Ejecuta estos comandos en la carpeta raíz:
 
 ## La base de datos
 
-- `npm run test:e2e` para los servidores de `npm start`, vacía la base de datos y arranca el back y el front. Cada ejecución empieza con la base de datos vacía.
-- Para vaciarla a mano, ejecuta `npm run stop` y después `npm run reset`.
+- `npm run test:e2e` detiene los servidores que inició `npm start`. Si Playwright arranca el back, recrea su base SQLite antes de cargar los datos de prueba. En local, si reutiliza un back que ya está en marcha, ese back conserva su base.
+- Para recrear la base a mano, ejecuta `npm run stop` y después `npm run reset`. Si aparece `Cannot delete`, detén el proceso que tiene abierto el archivo y repite el reinicio.
 
 ## Hook de commit
 
-El hook pre-commit ejecuta `vp staged`:
-
-- Aplica `vp check --fix` a los archivos del commit.
-- Ejecuta las pruebas unitarias relacionadas con los archivos `.ts` del commit.
-- Si un comando falla, el commit no se hace.
-
-El hook no ejecuta Playwright. No sustituye a `npm run verify`.
+El hook pre-commit ejecuta `vp staged`. Aplica `vp check --fix` a los archivos preparados y ejecuta las pruebas unitarias relacionadas con los `.ts`. Un fallo detiene el commit.
