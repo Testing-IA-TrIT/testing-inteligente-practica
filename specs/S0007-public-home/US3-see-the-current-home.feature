@@ -1,4 +1,4 @@
-# Spec: specs/S0007-public-home/spec.md
+# Spec: specs/S0007-public-home/S0007.spec.md
 
 Feature: [US3] See the home page as it is today
   As a signed-in user

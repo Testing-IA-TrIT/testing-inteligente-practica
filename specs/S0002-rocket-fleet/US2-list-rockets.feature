@@ -1,4 +1,4 @@
-# Spec: specs/S0002-rocket-fleet/spec.md
+# Spec: specs/S0002-rocket-fleet/S0002.spec.md
 
 Feature: [US2] List the rockets
   As a registered user

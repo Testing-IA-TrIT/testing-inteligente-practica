@@ -1,4 +1,4 @@
-# Spec: specs/S0004-launch-lifecycle/spec.md
+# Spec: specs/S0004-launch-lifecycle/S0004.spec.md
 
 Feature: [US2] Suspend a launch with a cause and a message
   As an operator

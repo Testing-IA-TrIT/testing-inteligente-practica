@@ -1,4 +1,4 @@
-# Spec: specs/S0006-user-roles/spec.md
+# Spec: specs/S0006-user-roles/S0006.spec.md
 
 Feature: [US2] Show the name and the role in the menu
   As a signed-in user

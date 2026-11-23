@@ -1,4 +1,4 @@
-# Spec: specs/S0004-launch-lifecycle/spec.md
+# Spec: specs/S0004-launch-lifecycle/S0004.spec.md
 
 Feature: [US3] See the status of each launch in the list
   As a registered user

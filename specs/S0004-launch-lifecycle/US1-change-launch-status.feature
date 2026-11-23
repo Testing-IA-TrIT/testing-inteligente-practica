@@ -1,4 +1,4 @@
-# Spec: specs/S0004-launch-lifecycle/spec.md
+# Spec: specs/S0004-launch-lifecycle/S0004.spec.md
 
 Feature: [US1] Change the status of a launch
   As an operator

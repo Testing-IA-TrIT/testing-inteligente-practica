@@ -1,4 +1,4 @@
-# Spec: specs/S0003-schedule-launch/spec.md
+# Spec: specs/S0003-schedule-launch/S0003.spec.md
 
 Feature: [US1] Schedule a launch
   As an operator

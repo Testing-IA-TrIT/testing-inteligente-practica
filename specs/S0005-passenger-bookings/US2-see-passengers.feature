@@ -1,4 +1,4 @@
-# Spec: specs/S0005-passenger-bookings/spec.md
+# Spec: specs/S0005-passenger-bookings/S0005.spec.md
 
 Feature: [US2] See the passengers of a launch and its available seats
   As an operator

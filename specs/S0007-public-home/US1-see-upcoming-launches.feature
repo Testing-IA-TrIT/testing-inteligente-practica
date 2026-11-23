@@ -1,4 +1,4 @@
-# Spec: specs/S0007-public-home/spec.md
+# Spec: specs/S0007-public-home/S0007.spec.md
 
 Feature: [US1] See the upcoming launches
   As a visitor

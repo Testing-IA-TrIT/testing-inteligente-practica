@@ -1,4 +1,4 @@
-# Spec: specs/S0006-user-roles/spec.md
+# Spec: specs/S0006-user-roles/S0006.spec.md
 
 Feature: [US1] Register as a passenger
   As a visitor

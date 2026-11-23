@@ -22,7 +22,7 @@ Cuando la cancelación funcione, prueba también el objetivo completo del operad
 
 > El operador entra, reserva una plaza para un pasajero en un lanzamiento y cancela esa reserva. Al final ve otra vez la plaza libre.
 
-- El código es `J0002`. El `.feature` va en `specs/J0002-<slug>/J0002-<slug>.feature`. No tiene `spec.md`.
+- El código es `J0002`. El `.feature` que define el journey va en `specs/J0002-<slug>/J0002-<slug>.feature`.
 - Cada paso apunta a un criterio que existe, por ejemplo `S0005-R1`. El journey no añade reglas nuevas.
 - Si un paso no tiene criterio, la spec tiene un hueco. Corrige la spec, no el journey.
 

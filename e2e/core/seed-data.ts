@@ -23,12 +23,12 @@ export const operatorAccount = {
   password: readOperatorSetting(process.env.OPERATOR_PASSWORD, DEFAULT_OPERATOR_PASSWORD),
 };
 
-// Spec: specs/S0003-schedule-launch/spec.md
+// Spec: specs/S0003-schedule-launch/S0003.spec.md
 export const seedRocket = { name: "Seed Rocket", capacity: 5, range: "orbital" };
 
 export const seedRockets = [seedRocket];
 
-// Spec: specs/S0007-public-home/spec.md
+// Spec: specs/S0007-public-home/S0007.spec.md
 // One planned launch of the seed rocket, seven days after the current date.
 export const seedLaunch = {
   daysAhead: 7,
