@@ -1,7 +1,5 @@
 # Steps of a journey
 
-Read this file only when the code starts with `J`.
-
 A journey is a complete goal of one user. It crosses several specs. It does not add rules. Each step is an action in the UI and points to a criterion that exists.
 
 ## Steps

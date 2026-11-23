@@ -31,42 +31,20 @@ Run the selected tests. Record results and evidence without diagnosis or repairs
    Assign suffixes in file, line and column order across all selected tests.
    Keep one ID across retries.
    If a rule tag is missing, use the Playwright test ID and record the missing tag.
-4. For each failed attempt, read its errors, attachments and `error-context.md`.
-   Find evidence through attachment paths or the recorded test output folder.
-   Extract the page content as specified in Rules.
-5. Remove the previous `e2e-evidence/` from the selected spec folder.
+4. Remove the previous `e2e-evidence/` from the selected spec folder.
    Verify that its resolved path is inside that folder before removal.
-   If you run the tests again, remove it again before you copy.
-   Copy evidence only from the run that the report describes.
-   Copy each available context file and failure screenshot to
-   `e2e-evidence/<test-id>/`.
-   Use only these filenames, where `<n>` is the attempt number:
-   `error-context-attempt-<n>.md` and `screenshot-attempt-<n>.png`.
-   Do not copy traces or videos.
+   Repeat this step for each new run before you copy evidence.
+5. If any test attempt failed, read the [failure evidence guide](resources/failure-evidence.md).
+   Follow it for each failed attempt, including attempts of tests that pass on retry.
 6. Replace `e2e-report.md` in the selected spec folder with the report.
-   Use the template and the output rules.
-   Check counts, test IDs, excerpt lengths and evidence links.
-   Make sure that each link opens a file,
-   and that each file in `e2e-evidence/` has a link.
-   Remove files that have no link.
+   Use the template and the [output rules](#output).
+   Check the counts and test IDs. For failed attempts, apply the checks in the evidence guide.
 
 ## Rules
 
 - Do not diagnose, repair, or change tests, code or configuration.
-- Record observed clues only. Mark missing evidence as unavailable.
+- Record observed clues only.
 - Remove ANSI escape sequences from reported errors.
-- Find fenced YAML page trees in every section of `error-context.md`.
-  Select only the `main` node and its descendants by indentation.
-  Include at most 40 lines in total, including the `main` node.
-  Mark truncation outside the code block.
-  If no `main` node exists, state that it is unavailable.
-  Do not include other context sections in the report.
-- Copy the complete `error-context.md` as evidence.
-- Use relative Markdown links for copied evidence.
-  Record trace and video source paths only.
-- Put failed tests from the selected spec in `Failures`.
-  Put failed tests from other specs in `Regressions`.
-  Keep all evidence in the selected spec folder.
 - Record failed retry attempts, flaky outcomes and run errors.
   Do not classify skipped tests or zero selected tests as a complete pass.
 
@@ -74,10 +52,7 @@ Run the selected tests. Record results and evidence without diagnosis or repairs
 
 1. Save `specs/<spec>-<slug>/e2e-report.md`.
 2. For a complete pass, keep only the date, command and result in the report.
-   Remove `e2e-evidence/`.
    Reply with one line.
-3. For failures, include each test ID, all tags, file and line, errors,
-   page excerpt and evidence links.
-   Include run errors even when no test result exists.
+3. Include run errors even when no test result exists.
 4. Report an incomplete run as incomplete.
    Do not reuse results or evidence from an earlier run.
