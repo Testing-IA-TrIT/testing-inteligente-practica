@@ -27,7 +27,7 @@ Apply the solution in one correction spec. Keep each change within its stated sc
    If necessary information is missing, ask one closed question at a time.
 3. Apply `Spec`.
    Close each gap (`G1`, `G2`, ...) with a minimum change in its `.feature`
-   file or `spec.md`.
+   file or `<id>.spec.md`.
    Do not regenerate files.
    Do not change other scenarios or criteria.
 4. Apply `Back`, then `Front`.

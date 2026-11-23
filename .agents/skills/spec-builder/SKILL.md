@@ -29,5 +29,5 @@ Coordinate the skills that write a spec and implement it when required.
 
 ## Output
 
-1. The path of the spec: `specs/<id>-<slug>/spec.md`.
+1. The path of the spec: `specs/<id>-<slug>/<id>.spec.md`.
 2. The output of `implement-spec` when it runs.

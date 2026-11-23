@@ -9,7 +9,7 @@ Implement the back and the front of one spec. The result is an application that 
 
 ## Input
 
-1. Read the spec in `specs/<id>-<slug>/spec.md`.
+1. Read the spec in `specs/<id>-<slug>/<id>.spec.md`.
 2. If `solution-mode` is `descriptive`, explain that the spec documents existing behavior and stop. If `solution-mode` is absent, use `prescriptive`.
 3. Read the code in `projects/back` and `projects/front` that is related to the spec.
 4. Find the existing style: folders, names, layers and test files.

@@ -11,7 +11,7 @@ Find the causes of all failures in an E2E report. Prepare a correction spec for 
 
 1. Get the code from the user, for example `S0042` or `J0001`. `S` is a spec. `J` is a journey.
 2. Find `specs/<code>-<slug>/e2e-report.md` and its `e2e-evidence/`.
-3. For a journey, there is no `spec.md`. Read the `.feature` and the specs of its steps.
+3. For a journey, read the `.feature` and the specs of its steps.
 4. If the code or a required input is missing, ask the user one closed question.
 
 ## Steps
@@ -19,7 +19,7 @@ Find the causes of all failures in an E2E report. Prepare a correction spec for 
 1. Read the report and its evidence. Include all failures in `Regressions`.
 2. If the report has no failures, say so in one line and stop.
 3. For each failure, read the test and its Page Objects. Read the back and front code that takes part in the failed behavior.
-4. Read the test's `.feature`. For a spec, read `spec.md` and the specs that define the rules used by the test. For a journey, treat the code of a `test.step` as a clue that does not assign the failure to a spec, and link the `.feature` in `fix.spec.md`.
+4. Read the test's `.feature`. For a spec, read `<code>.spec.md` and the specs that define the rules used by the test. For a journey, treat the code of a `test.step` as a clue that does not assign the failure to a spec, and link the `.feature` in `fix.spec.md`.
 5. Compare three hypotheses for each failure: test, code, and spec. For each hypothesis, find evidence for and against it. Give one check that can confirm or discard it.
 6. Group failures that have the same cause. Record spec gaps separately from the origin.
 7. Decide the origin, confidence, and correcting agent for each cause. If the evidence is not sufficient, state what is missing.
@@ -31,7 +31,7 @@ Find the causes of all failures in an E2E report. Prepare a correction spec for 
 
 - Read each file with a separate command. Do not take line numbers from output that joins files.
 - Each citation must give the file, line number, and line text in quotation marks. Before the verdict, check each line against the file. Correct or remove a citation that does not match.
-- A spec gap is data that the test needs to prepare, navigate, or check the behavior, but its `.feature` does not give. Ask: can an agent that reads only this `.feature` write the test without an assumption? A gap remains a gap when `spec.md` or another spec gives the data.
+- A spec gap is data that the test needs to prepare, navigate, or check the behavior, but its `.feature` does not give. Ask: can an agent that reads only this `.feature` write the test without an assumption? A gap remains a gap when `<code>.spec.md` or another spec gives the data.
 - An assertion stricter than the criterion is not a gap. The `.feature` gives the data, but the test reads it incorrectly.
 - For each cause, assign confidence as high, medium, or low. Name the correcting agent as `spec`, `código`, or `pruebas`.
 - Do not guess when evidence is insufficient. Put what is missing in `Problem` as a note on its cause. Do not put it in `Solution`.

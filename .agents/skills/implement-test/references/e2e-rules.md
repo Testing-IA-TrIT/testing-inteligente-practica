@@ -4,7 +4,7 @@ The e2e tests obey these rules. Each rule has a code. The skills `define-test`, 
 
 ## E1 Files and codes
 
-- **E1.1** Each spec has a folder `specs/<id>-<slug>/`. The spec is in `specs/<id>-<slug>/spec.md`. Each journey has a folder `specs/J<id>-<slug>/`. A journey has no `spec.md`.
+- **E1.1** Each spec has a folder `specs/<id>-<slug>/`. The spec is in `specs/<id>-<slug>/<id>.spec.md`. Each journey has a folder `specs/J<id>-<slug>/`. The `.feature` file defines the journey.
 - **E1.2** Each user story has one `.feature` file in the folder of the spec: `specs/<id>-<slug>/<story-code>-<story-slug>.feature`. For example, `US1-<slug>.feature`. A journey has one `.feature` file: `specs/J<id>-<slug>/J<id>-<slug>.feature`.
 - **E1.3** Write one test file for each `.feature` file. Give it the same name with `.test.ts`: `US1-<slug>.test.ts`. Put a journey test in `e2e/tests/J<id>-<slug>/J<id>-<slug>.test.ts`.
 - **E1.4** Do not use `.spec.ts`. The word "spec" is for the specification.

@@ -5,7 +5,7 @@ description: Writes one spec for existing behavior, a new feature, a bug fix, a 
 
 # Define a spec
 
-Write one `spec.md` for each request.
+Write one `<id>.spec.md` for each request.
 
 ## Input
 
@@ -37,4 +37,4 @@ Write one `spec.md` for each request.
 
 1. Check that `type` and `solution-mode` match the request. Check that each EARS criterion links to a user story.
 2. Show the spec to the user.
-3. Save it in `specs/<id>-<slug>/spec.md` only after the user confirms.
+3. Save it in `specs/<id>-<slug>/<id>.spec.md` only after the user confirms.

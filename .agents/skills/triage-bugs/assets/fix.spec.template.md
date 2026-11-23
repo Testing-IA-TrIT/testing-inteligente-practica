@@ -8,7 +8,8 @@ slug: example-feature
 
 C is a cause, G is a spec gap, and V is a verification criterion.
 
-Spec: [S0042](spec.md)  
+Spec: [S0042](S0042.spec.md)
+
 E2E report date: 2030-04-12
 
 ## Problem
@@ -22,7 +23,7 @@ E2E report date: 2030-04-12
 - Expected: the result is visible.
 - Observed: the test checks a different result.
 - Test: [example test](../../../e2e/tests/example/example.test.ts).
-- Spec: [spec](spec.md).
+- Spec: [spec](S0042.spec.md).
 - Evidence: [failure evidence](e2e-evidence/example.png).
 - Missing information: None.
 

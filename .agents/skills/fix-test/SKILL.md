@@ -14,7 +14,7 @@ Make each e2e test obey the e2e rules and check the response of its criterion. K
 3. Read each `*.test.ts` file in `e2e/tests/`. Playwright runs only these files.
 4. Read the Page Objects in `e2e/pages/` and the data in `e2e/test-data/` that the tests import.
 5. For a spec, read the spec and the `.feature` files in `specs/<id>-<slug>/`.
-6. For a journey, read the `.feature` in `specs/J<id>-<slug>/`. Read the criterion of each step in its spec. A journey has no `spec.md`.
+6. For a journey, read the `.feature` in `specs/J<id>-<slug>/`. Read the criterion of each step in its spec.
 7. If the user names some specs, journeys or test files, fix only those.
 
 ## Steps
