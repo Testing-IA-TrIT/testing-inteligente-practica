@@ -14,8 +14,13 @@ AstroBookings es una agencia que vende plazas en lanzamientos espaciales. El pro
 
 - Las specs están en `specs/<id>-<slug>/`.
 - Las pruebas e2e están en `e2e/tests/<id>-<slug>/`.
-- Las skills de los agentes están en `.agents/skills/`.
+- Las skills de los agentes están en `.agents/skills/`. Cuando una skill tiene guías en `resources/`, su `SKILL.md` indica cuándo leer cada una.
 - Las reglas del proyecto para los agentes están en `AGENTS.md`.
+
+## Cabecera YAML de una spec
+
+- `type` distingue una funcionalidad (`feature`), un arreglo (`bug-fix`), un refactor (`refactor`) y un cambio de comportamiento (`change`).
+- `solution-mode` indica si `Solution` describe el comportamiento actual (`descriptive`) o define el trabajo de implementación (`prescriptive`). Si falta el campo, la spec se interpreta como prescriptiva.
 
 ## Instalar (una vez)
 

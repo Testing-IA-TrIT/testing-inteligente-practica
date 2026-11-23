@@ -72,7 +72,7 @@ Aplica el proceso del curso: cada responsable en su propia conversación y con s
 
 La URL de tu repositorio, público y sin secretos, con:
 
-1. La spec y sus `.feature`.
+1. La spec de la cancelación en `specs/<id>-<slug>/<id>.spec.md` y sus archivos `.feature`.
 2. El `.feature` del journey `J0002`.
 3. El código del back y del front, con sus pruebas unitarias.
 4. Las pruebas e2e de la spec y del journey, y el informe `e2e-report.md` de toda la suite.

@@ -18,6 +18,11 @@
 - Group related changes; keep commits small and focused.
 - Conventional commit `{feat|refactor|fix|chore|docs|test}(scope): {description}`
 
+## Specifications
+
+- When you move a spec file, keep its ID and criterion codes.
+- Update the references to the moved file. Check `.feature` headers, seed comments and triage links.
+
 ## System
 
 Based on two projects, a backend REST API in `projects/back` and a frontend web application in `projects/front`.
@@ -77,4 +82,4 @@ No tool checks these limits. Review them manually.
 
 ---
 
-> last updated: 2026-10-17
+> last updated: 2026-11-23
