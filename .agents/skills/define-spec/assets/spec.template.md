@@ -1,14 +1,16 @@
 ---
-id: {S0001}
+id: S0001
 name: Name of the Spec
 slug: name-of-the-spec
+type: feature
+solution-mode: prescriptive
 ---
 
 # {Id} - Name of the Spec
 
 ## Problem
 
-{Short description of the problem that this spec is trying to solve.}
+{State the objective. Add the evidence and results that the skill requires.}
 
 ### User stories
 
@@ -22,19 +24,19 @@ slug: name-of-the-spec
 
 - {What is not included in this spec.}
 
-## Solution 
+## Solution
 
-### Back 
+### Back
 
-- {Description of the backend solution.}
+- {State what the back does or specify the work for the back. Follow solution-mode.}
 
 ### Front
 
-- {Description of the frontend solution.}
+- {State what the front does or specify the work for the front. Follow solution-mode.}
 
 ### E2E
 
-- {Description of the end-to-end solution.}
+- {State what the E2E tests cover or specify the E2E work. Follow solution-mode.}
 
 ## Verification
 
